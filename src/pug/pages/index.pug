@@ -1,0 +1,19 @@
+extends ../layout/template
+
+block variables
+    - var pageTitle    = 'My webpack bundle';
+    - var description  = 'Webpack bundle for js easy coding';
+    - var pageClass    = 'index-body';
+    - var mainClass    = 'index-main';
+
+block content
+
+    section.wrapper
+        .container
+            .row
+                .section
+                    +item('My webpack bundle', 'webpack bundle description')
+
+block script
+    script(type='text/javascript').
+        console.log('im here')

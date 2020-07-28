@@ -1,0 +1,59 @@
+{
+  "name": "webpack-my-bundle",
+  "version": "1.0.0",
+  "description": "webpack",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode production",
+    "dev": "webpack --mode development",
+    "watch": "webpack --mode development --watch",
+    "start": "webpack-dev-server --mode development --open"
+  },
+  "keywords": [
+    "js",
+    "webpack",
+    "webpack-cli"
+  ],
+  "browserslist": [
+    "> 1%",
+    "last 3 version"
+  ],
+  "postcss": {
+    "parser": "sugarss",
+    "map": false,
+    "plugins": {
+      "postcss-plugin": {}
+    }
+  },
+  "author": "webskyus",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^9.8.5",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^6.0.3",
+    "css-loader": "^3.6.0",
+    "css-mqpacker": "^7.0.0",
+    "css-url-relative-plugin": "^1.0.0",
+    "cssnano": "^4.1.10",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "file-loader": "^6.0.0",
+    "html-webpack-plugin": "^4.3.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "normalize.css": "^8.0.1",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "postcss-load-config": "^2.1.0",
+    "postcss-loader": "^3.0.0",
+    "postcss-sass-loader": "^1.1.0",
+    "pug": "^3.0.0",
+    "pug-loader": "^2.4.0",
+    "sass": "^1.26.10",
+    "sass-loader": "^9.0.2",
+    "style-loader": "^1.2.1",
+    "terser-webpack-plugin": "^3.0.7",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0",
+    "webpack-livereload-plugin": "^2.3.0"
+  },
+  "dependencies": {}
+}

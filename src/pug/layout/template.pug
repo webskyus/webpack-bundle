@@ -1,0 +1,59 @@
+include ../utils/mixin
+block variables
+
+doctype html
+head
+	title #{pageTitle}
+	meta(name="description", content=description)
+
+	// favicon
+	link(rel="shortcut icon", href="./images/favicon/favicon.ico", type="image/x-icon")
+
+	// favicon for androind devices 
+	link(rel='icon', type='image/png', sizes='192x192', href='./images/favicon/android-icon-192x192.png')
+	link(rel='icon', type='image/png', sizes='32x32', href='./images/favicon/favicon-32x32.png')
+	link(rel='icon', type='image/png', sizes='96x96', href='./images/favicon/favicon-96x96.png')
+	link(rel='icon', type='image/png', sizes='16x16', href='./images/favicon/favicon-16x16.png')
+
+	// favicon for ios devices
+	link(rel='apple-touch-icon', sizes='57x57', href='./images/favicon/apple-icon-57x57.png')
+	link(rel='apple-touch-icon', sizes='60x60', href='./images/favicon/apple-icon-60x60.png')
+	link(rel='apple-touch-icon', sizes='72x72', href='./images/favicon/apple-icon-72x72.png')
+	link(rel='apple-touch-icon', sizes='76x76', href='./images/favicon/apple-icon-76x76.png')
+	link(rel='apple-touch-icon', sizes='114x114', href='./images/favicon/apple-icon-114x114.png')
+	link(rel='apple-touch-icon', sizes='120x120', href='./images/favicon/apple-icon-120x120.png')
+	link(rel='apple-touch-icon', sizes='144x144', href='./images/favicon/apple-icon-144x144.png')
+	link(rel='apple-touch-icon', sizes='152x152', href='./images/favicon/apple-icon-152x152.png')
+	link(rel='apple-touch-icon', sizes='180x180', href='./images/favicon/apple-icon-180x180.png')
+	link(color='#9777A8', rel='mask-icon', href='./images/favicon/safari-pinned-tab.svg')
+
+	// favicon for ie
+	meta(name='msapplication-TileColor', content='#ffffff')
+	meta(name='msapplication-TileImage', content='./images/favicon/ms-icon-144x144.png')
+
+
+	// address bar text color
+	meta(name='theme-color', content='#fff')
+
+
+html(lang='en')
+	// for custom head
+		block head
+
+
+	body(class=pageClass)
+		// header
+		include ../includes/modules/header/header
+
+		// main sections wrapper
+		main.main(class=mainClass)
+
+			block content
+
+
+		// footer
+		include ../includes/modules/footer/footer
+
+
+	// for custom scripts
+	block script
