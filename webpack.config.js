@@ -3,7 +3,7 @@ const fs = require('fs');
 const htmlWebpackPlugin = require('html-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const CopyPlugin   = require('copy-webpack-plugin');
-const pages_dir = "./src/pug/pages/";
+const pages_dir = './src/pug/pages/';
 const page = fs.readdirSync(pages_dir).filter(fileName => fileName.endsWith('.pug'))
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const autoprefixer = require('autoprefixer');
@@ -13,13 +13,22 @@ const LiveReloadPlugin = require('webpack-livereload-plugin');
 
 
 module.exports = {
-    mode: "development",
+    mode: 'development',
     entry: {
-        main: "./src/js/index.js",
+        analytics: './src/js/analytics.js',
+        main: ['@babel/polyfill', './src/js/index.js']
     },
     output: {
-        path: path.resolve(__dirname, "./dist"),
-        filename: "./js/bundle.[hash].js",
+        path: path.resolve(__dirname, './dist'),
+        filename: './js/[name].[hash].js',
+    },
+    resolve: {
+        extensions: ['.js', '.json', '.png', '.xml', '.csv'],
+        alias: {
+            '@models': path.resolve(__dirname, './src/js/models'),
+            '@assets': path.resolve(__dirname, './src/assets'),
+            '@': path.resolve(__dirname, 'src')
+        }
     },
     plugins: [
         new CleanWebpackPlugin(),
@@ -40,7 +49,7 @@ module.exports = {
             ]
         }),
         new MiniCssExtractPlugin({
-            filename: "styles/[name].[hash].css",
+            filename: 'styles/[name].[hash].css',
         }),
         new LiveReloadPlugin()
     ],
@@ -48,23 +57,26 @@ module.exports = {
         minimizer: [
             new TerserJSPlugin(),
             new OptimizeCSSAssetsPlugin(),
-        ]
+        ],
+        splitChunks: {
+            chunks: 'all'
+        }
     },
     module: {
         rules: [
             {
                 test: /\.css$/,
                 use: [
-                    "style-loader",
+                    'style-loader',
                     MiniCssExtractPlugin.loader,
                     {
-                        loader: "css-loader",
+                        loader: 'css-loader',
                         options: {
                             sourceMap: true,
                         }
                     },
                     {
-                        loader: "postcss-loader",
+                        loader: 'postcss-loader',
                         options: {
                             sourceMap: true,
                             config: {
@@ -77,17 +89,17 @@ module.exports = {
             {
                 test: /\.s[ac]ss$/,
                 use: [
-                    "style-loader",
+                    'style-loader',
                     MiniCssExtractPlugin.loader,
                     {
-                        loader: "css-loader",
+                        loader: 'css-loader',
                         options: {
                             sourceMap: true,
                             url: false
                         }
                     },
                     {
-                        loader: "postcss-loader",
+                        loader: 'postcss-loader',
                         options: {
                             sourceMap: true,
                             config: {
@@ -96,7 +108,7 @@ module.exports = {
                         }
                     },
                     {
-                        loader: "sass-loader",
+                        loader: 'sass-loader',
                         options: {
                             sourceMap: true,
                         }
@@ -114,6 +126,30 @@ module.exports = {
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/,
                 loader: 'file-loader?name=/fonts/[name].[hash].[ext]',
+            },
+            {
+                test: /\.xml$/,
+                loader: 'xml-loader',
+            },
+            {
+                test: /\.csv$/,
+                loader: 'csv-loader',
+                options: {
+                    dynamicTyping: true,
+                    header: true,
+                    skipEmptyLines: true
+                }
+            },
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env'],
+                        plugins: ['@babel/plugin-proposal-class-properties']
+                    }
+                }
             }
         ]
     },

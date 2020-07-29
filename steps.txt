@@ -26,19 +26,19 @@
             ++ sass
             ++ fonts loader
             ++ webpack livereloader
-            -- svg sprite create 
-            -- xml loader
-            -- csv loader
-        -- module resolve
-            -- extensions for js file .js, .png
-            -- alias path for js directory @models
-        -- optimization
-            -- if used jquery example few times
-        -- dev server and module devServer port write,
+            ++ xml loader
+            ++ csv loader
+            -- svg sprite create
+        ++ module resolve [ extensions -> extensions; alias ]
+            ++ extensions for js file .js, .png
+            ++ alias path for js directory @models
+        ++ optimization
+            ++ if used jquery example few times add splitChunks -> chunnks -> all
+        ++ dev server and module devServer port write,
            package.json write new mod start
-        -- control files folder change and move
+        ++ control files folder change and move
            add new plugin copy-webpack-plugin
-        -- minicss plugin options
+        ++ minicss plugin options
         -- const isDev
         -- cross-env
         -- optimization | optimization() isProd
@@ -47,12 +47,12 @@
         -- add sass and sass loader
         -- filename function for hash name is dev
         -- optimize code use down in cssLoaders()
-        -- setup babel add npm and add module
-            -- add in package .25% dead browser
-            -- add babel env preset
-            -- add polyfill
-            -- add new str in entry main @babel/polyfill
-            -- add new plugin for babel @babel/plugin-proposal-class-properties
+        ++ setup babel add npm and add module
+            ++ add in package .25% dead browser
+            ++ add babel env preset
+            ++ add polyfill
+            ++ add new str in entry main @babel/polyfill
+            ++ add new plugin for babel @babel/plugin-proposal-class-properties
         -- setup typescript
         -- optimize repeat code
         -- setup react
